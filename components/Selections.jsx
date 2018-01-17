@@ -1,9 +1,14 @@
 import React from 'react';
 
 class Selections extends React.Component {
+
+  constructor(props){
+    super(props);
+  }
+
   render(){
     return(
-      <div>Selections</div>
+      <div className="selections">Selections</div>
     );
   }
 }

@@ -8,13 +8,20 @@ import React from 'react';
 
 class Root extends React.Component {
 
+constructor(props){
+  super(props);
+}
+
+
 render(){
   return(
-    <div>
+    <div className="main">
       <Header/>
-      <Selections/>
-      <Grid/>
-      <Options/>
+      <div className='middle'>
+        <Selections/>
+        <Grid/>
+        <Options/>
+      </div>
       <Footer/>
     </div>
   );

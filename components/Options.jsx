@@ -1,9 +1,14 @@
 import React from 'react';
 
-class Options extends React.component {
+class Options extends React.Component {
+
+  constructor(props){
+    super(props);
+  }
+
   render(){
     return(
-      <div>Options</div>
+      <div className="options">Options</div>
     );
   }
 }

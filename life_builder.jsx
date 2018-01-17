@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import Root from './components/root';
 
 document.addEventListener('DOMContentLoaded', ()=> {
+  console.log('here I am');
   const root = document.getElementById('root');
-  ReactDOM.render("hello world", root);
+  ReactDOM.render(<Root/>, root);
 });
