@@ -29,9 +29,8 @@ document.addEventListener('DOMContentLoaded', ()=> {
   grid.classList.add("grid");
   middle.appendChild(grid);
   grid.addEventListener("click", (e) => {
-    console.log(e.target);
-    console.log(e.currentTarget);
-  });
+    return toggleFunction(e.target)()}
+  );
   let row = 0;
   for(row = 0; row < 50; row++){
     let rowEl = document.createElement("div");
@@ -44,7 +43,7 @@ document.addEventListener('DOMContentLoaded', ()=> {
       colEl.classList.add("vacant");
       //colEl.classList.add("even");
       colEl.id = `${row},${col}`;
-      colEl.addEventListener("click", toggleFunction(colEl))
+      //colEl.addEventListener("click", toggleFunction(colEl))
       rowEl.appendChild(colEl);
     }
   }
