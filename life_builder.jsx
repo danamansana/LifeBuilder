@@ -16,11 +16,18 @@ function toggleFunction(el) {
 
 document.addEventListener('DOMContentLoaded', ()=> {
   const root = document.getElementById('root');
+  root.addEventListener("click", (e) => {
+    if(e.target.classList.contains("blankSpace")){
+      selected = null;
+    }
+  });
   let header = document.createElement("div");
   header.classList.add("header");
+  header.classList.add("blankSpace");
   root.appendChild(header);
   let middle = document.createElement("div");
   middle.classList.add("middle");
+  middle.classList.add("blankSpace");
   root.appendChild(middle);
   let options = document.createElement("div");
   options.classList.add("options");
@@ -57,21 +64,24 @@ document.addEventListener('DOMContentLoaded', ()=> {
   let selectionCount;
   let selected;
   let samples = [glider, oscillator, gun];
+  let sampleNames = ["glider", "oscillator", "gun"];
   for (selectionCount = 0; selectionCount < 3; selectionCount++){
     let selection = document.createElement("div");
     let localCount = selectionCount;
     selection.classList.add("selection");
+    selection.id = sampleNames[selectionCount];
     selections.appendChild(selection);
     selection.addEventListener('click', () => {
-      
+
       selected = samples[localCount];
-      console.log(selected);
+      //console.log(selected);
     }
     );
     gridDrawer(selection, samples[selectionCount]);
   }
   let footer = document.createElement("div");
   footer.classList.add("footer");
+  footer.classList.add("blankSpace");
   root.appendChild(footer);
   let interval;
   let startButton = document.createElement("div");
