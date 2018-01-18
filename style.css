@@ -38,11 +38,6 @@ html {
   background-color: yellow;
 }
 
-.selections {
-  height: 100%;
-  width: 15%;
-  background-color: yellow;
-}
 
 .grid {
   height: 80vh;
@@ -79,6 +74,19 @@ html {
   background-color: blue;
   border: 1px solid black;
 }
+
+.selections {
+  height: 100%;
+  width: 15%;
+  background-color: yellow;
+}
+.selections .selection{
+  height: 20%;
+  background-color: gray;
+  border: 1px solid black;
+  box-sizing: border-box;
+}
+
 
 .startButton {
   height: 20px;

@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import Root from './components/root';
+import gridDrawer from './grid_drawer.js';
 
 function toggleFunction(el) {
   return () => {
@@ -19,7 +20,7 @@ function toggleElement(el) {
 }
 
 document.addEventListener('DOMContentLoaded', ()=> {
-  console.log('here I am');
+  window.gridDrawer = gridDrawer;
   const root = document.getElementById('root');
   let header = document.createElement("div");
   header.classList.add("header");
@@ -52,6 +53,12 @@ document.addEventListener('DOMContentLoaded', ()=> {
   let selections = document.createElement("div");
   selections.classList.add("selections");
   middle.appendChild(selections);
+  let selectionCount;
+  for (selectionCount = 0; selectionCount < 5; selectionCount++){
+    let selection = document.createElement("div");
+    selection.classList.add("selection");
+    selections.appendChild(selection);
+  }
   let footer = document.createElement("div");
   footer.classList.add("footer");
   root.appendChild(footer);
