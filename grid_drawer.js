@@ -1,6 +1,7 @@
 
 
 function gridDrawer(domEl, grid){
+  
   let height = grid.length;
   let width  = grid[0].length;
   let rowIndex;
@@ -13,7 +14,7 @@ function gridDrawer(domEl, grid){
       let classType = ( grid[rowIndex][colIndex] === 0 ? "vacant" : "occupied");
       let square = document.createElement("div");
       square.classList.add(`${classType}`);
-      squar.id = `${rowIndex},${colIndex}`;
+      square.id = `${rowIndex},${colIndex}`;
       row.appendChild(square);
     }
   }

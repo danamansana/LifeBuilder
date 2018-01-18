@@ -3,7 +3,9 @@ import ReactDOM from 'react-dom';
 import Root from './components/root';
 import { toggleElement, sum, neighbors, pairParse, pairCode, codeNeighbors, DOMNeighbors,
   NeighborsCount, updateCell, cellNeedsUpdate, cellsNeedingUpdate, updateCells} from './vector_methods.js';
+import { glider, oscillator, gun } from './sample_shapes';
 import gridDrawer from './grid_drawer.js';
+import gridAdder from './grid_adder';
 
 function toggleFunction(el) {
   return () => {
@@ -13,7 +15,6 @@ function toggleFunction(el) {
 
 
 document.addEventListener('DOMContentLoaded', ()=> {
-  window.gridDrawer = gridDrawer;
   const root = document.getElementById('root');
   let header = document.createElement("div");
   header.classList.add("header");
@@ -27,6 +28,10 @@ document.addEventListener('DOMContentLoaded', ()=> {
   let grid = document.createElement("div");
   grid.classList.add("grid");
   middle.appendChild(grid);
+  grid.addEventListener("click", (e) => {
+    console.log(e.target);
+    console.log(e.currentTarget);
+  });
   let row = 0;
   for(row = 0; row < 50; row++){
     let rowEl = document.createElement("div");
@@ -47,10 +52,20 @@ document.addEventListener('DOMContentLoaded', ()=> {
   selections.classList.add("selections");
   middle.appendChild(selections);
   let selectionCount;
-  for (selectionCount = 0; selectionCount < 5; selectionCount++){
+  let selected;
+  let samples = [glider, oscillator, gun];
+  for (selectionCount = 0; selectionCount < 3; selectionCount++){
     let selection = document.createElement("div");
+    let localCount = selectionCount;
     selection.classList.add("selection");
     selections.appendChild(selection);
+    selection.addEventListener('click', () => {
+      debugger
+      selected = samples[localCount];
+      console.log(selected);
+    }
+    );
+    gridDrawer(selection, samples[selectionCount]);
   }
   let footer = document.createElement("div");
   footer.classList.add("footer");
