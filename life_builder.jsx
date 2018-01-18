@@ -87,7 +87,7 @@ document.addEventListener('DOMContentLoaded', ()=> {
   let startButton = document.createElement("div");
   startButton.classList.add("startButton");
   header.appendChild(startButton);
-  startButton.addEventListener("click", () => {interval = setInterval(updateCells, 1000);});
+  startButton.addEventListener("click", () => {interval = setInterval(updateCells, 100);});
   let stopButton = document.createElement("div");
   stopButton.classList.add("stopButton");
   header.appendChild(stopButton);
