@@ -29,8 +29,12 @@ document.addEventListener('DOMContentLoaded', ()=> {
   grid.classList.add("grid");
   middle.appendChild(grid);
   grid.addEventListener("click", (e) => {
-    return toggleFunction(e.target)()}
-  );
+    if (selected){
+      gridAdder(pairParse(e.target.id), selected);
+    } else {
+      return toggleFunction(e.target)();
+    }
+  });
   let row = 0;
   for(row = 0; row < 50; row++){
     let rowEl = document.createElement("div");
@@ -59,7 +63,7 @@ document.addEventListener('DOMContentLoaded', ()=> {
     selection.classList.add("selection");
     selections.appendChild(selection);
     selection.addEventListener('click', () => {
-      debugger
+      
       selected = samples[localCount];
       console.log(selected);
     }
