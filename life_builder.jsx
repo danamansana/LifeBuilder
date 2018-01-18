@@ -87,9 +87,23 @@ document.addEventListener('DOMContentLoaded', ()=> {
   let startButton = document.createElement("div");
   startButton.classList.add("startButton");
   header.appendChild(startButton);
-  startButton.addEventListener("click", () => {interval = setInterval(updateCells, 100);});
+  let speed = 1000;
+  startButton.addEventListener("click", () => {interval = setInterval(updateCells, speed);});
   let stopButton = document.createElement("div");
   stopButton.classList.add("stopButton");
   header.appendChild(stopButton);
   stopButton.addEventListener("click", () => {clearInterval(interval);});
+  let input = document.createElement("input");
+  input.classList.add("slider");
+  input.setAttribute("type", "range");
+  input.setAttribute("min", "1");
+  input.setAttribute("max", "500");
+  input.setAttribute("value", "100");
+  input.addEventListener("change", (e) => {
+    console.log("change");
+    speed = speed*(parseInt(e.target.value)/100);
+  });
+  options.appendChild(input);
+
+
 });
