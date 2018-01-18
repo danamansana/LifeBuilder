@@ -18,8 +18,21 @@ html {
 .header {
   height: 10%;
   background-color: yellow;
+  display: flex;
+  justify-content: space-around;
 }
 
+.startButton {
+  height: 20px;
+  width: 30px;
+  background-color: blue;
+}
+
+.stopButton {
+  height: 20px;
+  width: 30px;
+  background-color: green;
+}
 .footer {
   height: 10%;
   background-color: yellow;
@@ -85,11 +98,4 @@ html {
   background-color: gray;
   border: 1px solid black;
   box-sizing: border-box;
-}
-
-
-.startButton {
-  height: 20px;
-  width: 30px;
-  background-color: blue;
 }

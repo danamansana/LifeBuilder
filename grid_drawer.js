@@ -1,3 +1,5 @@
+
+
 function gridDrawer(domEl, grid){
   let height = grid.length;
   let width  = grid[0].length;
