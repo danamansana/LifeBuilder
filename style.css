@@ -62,7 +62,7 @@ html {
   flex-direction: row;
 }
 
-.grid .row .even {
+.grid .row .occupied {
   height: 100%;
   width: 2%;
   border: 1px solid black;
@@ -71,11 +71,17 @@ html {
   background-color: green;
 }
 
-.grid .row .odd {
+.grid .row .vacant {
   height: 100%;
   width: 2%;
   margin: 0;
   padding: 0;
   background-color: blue;
   border: 1px solid black;
+}
+
+.startButton {
+  height: 20px;
+  width: 30px;
+  background-color: blue;
 }

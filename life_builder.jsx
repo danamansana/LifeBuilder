@@ -3,7 +3,19 @@ import ReactDOM from 'react-dom';
 import Root from './components/root';
 
 function toggleFunction(el) {
-  return () => {el.classList.toggle('odd');};
+  return () => {
+    toggleElement(el);
+    };
+}
+
+function toggleElement(el) {
+  if(el.classList.contains("vacant")){
+    el.classList.remove("vacant");
+    el.classList.add("occupied");
+  }else{
+    el.classList.remove("occupied");
+    el.classList.add("vacant");
+  }
 }
 
 document.addEventListener('DOMContentLoaded', ()=> {
@@ -30,9 +42,9 @@ document.addEventListener('DOMContentLoaded', ()=> {
     for(col = 0; col < 50; col++){
       let colEl = document.createElement("div");
       //colEl.classList.add(((row+col)%2===0 ? "even" : "odd"));
-      colEl.classList.add("odd");
-      colEl.classList.add("even");
-      
+      colEl.classList.add("vacant");
+      //colEl.classList.add("even");
+      colEl.id = `${row},${col}`;
       colEl.addEventListener("click", toggleFunction(colEl))
       rowEl.appendChild(colEl);
     }
@@ -43,5 +55,76 @@ document.addEventListener('DOMContentLoaded', ()=> {
   let footer = document.createElement("div");
   footer.classList.add("footer");
   root.appendChild(footer);
-
+  let startButton = document.createElement("div");
+  startButton.classList.add("startButton");
+  header.appendChild(startButton);
+  startButton.addEventListener("click", () => {setInterval(updateCells, 1000);});
 });
+
+
+function sum(pair1, pair2){
+  return [(pair1[0]+pair2[0]+50)%50, (pair1[1]+pair2[1]+50)%50];
+}
+
+function neighbors(pair){
+  let vecs = [[-1,-1], [-1,0], [-1,1], [0,-1], [0,1], [1,-1], [1,0], [1,1]];
+  return vecs.map((vec) => (sum(vec,pair)));
+}
+
+function pairParse(pair){
+  return [parseInt(pair.split(",")[0]), parseInt(pair.split(",")[1])];
+}
+
+function pairCode(pair){
+  return `${pair[0]},${pair[1]}`;
+}
+
+function codeNeighbors(pair){
+  return (neighbors(pairParse(pair))).map((pair) => (pairCode(pair)));
+}
+
+function DOMNeighbors(pair){
+  return codeNeighbors(pair).map((code) => (document.getElementById(code)));
+}
+
+function NeighborsCount(pair){
+  return DOMNeighbors(pair).filter((neighbor) => (neighbor.classList.contains("occupied"))).length;
+}
+
+function updateCell(pair){
+  let cell = document.getElementById(pair);
+  if(cell.classList.contains("vacant")){
+    if(NeighborsCount(pair) === 3){
+      toggleElement(cell);
+    }
+  } else {
+    if(NeighborsCount(pair) < 2 || NeighborsCount(pair) > 3){
+      toggleElement(cell);
+    }
+  }
+}
+
+function cellNeedsUpdate(pair){
+  let cell = document.getElementById(pair);
+  return (cell.classList.contains("vacant") && NeighborsCount(pair) === 3)||(cell.classList.contains("occupied") && NeighborsCount(pair) !== 2 && NeighborsCount(pair) !== 3);
+}
+
+function cellsNeedingUpdate(){
+  let requireList = [];
+  let i = 0;
+  for(i=0; i<2500; i++){
+    let pair = pairCode([i%50, parseInt(i/50)]);
+    if (cellNeedsUpdate(pair)){
+      requireList.push(pair);
+    }
+  }
+  return requireList;
+}
+
+function updateCells(){
+  cellsNeedingUpdate().forEach(
+    (cell) => {
+    toggleElement(document.getElementById(cell));
+    }
+  );
+}
