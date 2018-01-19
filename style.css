@@ -19,9 +19,26 @@ html {
   height: 10%;
   background-color: transparent;
   display: flex;
-  justify-content: space-around;
+  justify-content: flex-start;
 }
 
+.header h1 {
+  background-color: gold;
+  color: green;
+  font-size: 30px;
+  width: fit-content;
+  padding: 5px;
+  border-radius: 5px;
+  height: fit-content;
+}
+
+.header h2 {
+  background-color: transparent;
+  color: green;
+  font-size: 15px;
+  width: fit-content;
+  padding: 5px;
+}
 .Button {
   width: fit-content;
   font-size: 20px;

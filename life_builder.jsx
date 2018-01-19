@@ -16,6 +16,8 @@ function toggleFunction(el) {
 
 document.addEventListener('DOMContentLoaded', ()=> {
   const root = document.getElementById('root');
+  let lastTime = Date.now();
+  let stopped = true;
   root.addEventListener("click", (e) => {
     if(e.target.classList.contains("blankSpace")){
       selected = null;
@@ -25,6 +27,14 @@ document.addEventListener('DOMContentLoaded', ()=> {
   header.classList.add("header");
   header.classList.add("blankSpace");
   root.appendChild(header);
+  let title = document.createElement("h1");
+  header.appendChild(title);
+  let titleText = document.createTextNode("LifeBuilder")
+  title.appendChild(titleText);
+  let tagLine = document.createElement("h2");
+  let tagLineText = document.createTextNode("search for patterns in the Game of Life!");
+  tagLine.appendChild(tagLineText);
+  title.appendChild(tagLine);
   let middle = document.createElement("div");
   middle.classList.add("middle");
   middle.classList.add("blankSpace");
@@ -91,13 +101,16 @@ document.addEventListener('DOMContentLoaded', ()=> {
   startButton.classList.add("Button");
   options.appendChild(startButton);
   let speed = 1000;
-  startButton.addEventListener("click", () => {interval = setInterval(updateCells, speed);});
+  startButton.addEventListener("click", () => {
+    stopped = false;
+    //updateCellsRepeatedly();
+  });
   let startText = document.createTextNode("Start");
   startButton.appendChild(startText);
   let stopButton = document.createElement("div");
   stopButton.classList.add("Button");
   options.appendChild(stopButton);
-  stopButton.addEventListener("click", () => {clearInterval(interval);});
+  stopButton.addEventListener("click", () => {stopped = true;});
   let stopText = document.createTextNode("Stop");
   stopButton.appendChild(stopText);
   let stepButton = document.createElement("div");
@@ -120,13 +133,14 @@ document.addEventListener('DOMContentLoaded', ()=> {
   speedP.appendChild(speedText);
   let inputSpeed = document.createElement("input");
   inputSpeed.classList.add("slider");
+  inputSpeed.id = "speed";
   inputSpeed.setAttribute("type", "range");
-  inputSpeed.setAttribute("min", "1");
-  inputSpeed.setAttribute("max", "500");
-  inputSpeed.setAttribute("value", "100");
+  inputSpeed.setAttribute("min", 1);
+  inputSpeed.setAttribute("max", 100);
+  inputSpeed.setAttribute("value", 100);
   inputSpeed.addEventListener("change", (e) => {
-    console.log("change");
     speed = speed*(parseInt(e.target.value)/100);
+    console.log(speed);
   });
   speedLabel.appendChild(inputSpeed);
   let zoomLabel = document.createElement("label");
@@ -139,8 +153,19 @@ document.addEventListener('DOMContentLoaded', ()=> {
   zoomLabel.appendChild(inputZoom);
   inputZoom.classList.add("slider");
   inputZoom.setAttribute("type", "range");
-  inputZoom.setAttribute("min", "1");
-  inputZoom.setAttribute("max", "500");
-  inputZoom.setAttribute("value", "100");
-
+  inputZoom.setAttribute("min", 1);
+  inputZoom.setAttribute("max", "100");
+  inputZoom.setAttribute("value", 100);
+  let newTime = Date.now();
+  function updateCellsRepeatedly(){
+    let newTime = Date.now();
+    let speed = parseInt(document.getElementById("speed").value)*10;
+    console.log(speed);
+    if (newTime - lastTime > speed && !stopped){
+      updateCells();
+      lastTime = newTime;
+    }
+  }
+  setInterval(() => {
+    updateCellsRepeatedly();}, 50);
 });
