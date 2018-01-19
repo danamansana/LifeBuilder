@@ -74,3 +74,10 @@ export function updateCells(){
     }
   );
 }
+
+export function clearScreen(){
+  let occs = document.getElementsByClassName("grid")[0].getElementsByClassName("occupied");
+  while(occs.length !== 0){
+    toggleElement(occs[0]);
+  }
+}

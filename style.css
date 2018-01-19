@@ -4,7 +4,7 @@ html {
 }
 
 #root{
-  color: green;
+  color: transparent;
   width: 100%;
   height: 100%;
   margin: 0 auto;
@@ -17,11 +17,20 @@ html {
 
 .header {
   height: 10%;
-  background-color: yellow;
+  background-color: transparent;
   display: flex;
   justify-content: space-around;
 }
 
+.Button {
+  width: fit-content;
+  font-size: 20px;
+  color: darkgreen;
+  background-color: gold;
+  border-radius: 5px;
+  padding: 3px;
+  padding-right: 10px;
+}
 .startButton {
   height: 20px;
   width: 30px;
@@ -33,24 +42,53 @@ html {
   width: 30px;
   background-color: green;
 }
+
+.stepButton {
+  height: 20px;
+  width: 30px;
+  background-color: red;
+}
+
+.clearButton {
+  height: 20px;
+  width: 30px;
+  background-color: orange;
+}
 .footer {
   height: 10%;
-  background-color: yellow;
+  background-color: transparent;
 }
 
 .middle {
   height: 80%;
   display: flex;
-  background-color: yellow;
+  background-color: transparent;
   justify-content: space-between;
 }
 
+.optionsHolder{
+  display: flex;
+  justify-content: center;
+}
 .options {
+  display: flex;
+  flex-direction: column;
   height: 100%;
   width: 15%;
-  background-color: yellow;
+  background-color: transparent;
+  justify-content: space-around;
+  /* align-items: center; */
 }
 
+p{
+  width: fit-content;
+  font-size: 20px;
+  color: darkgreen;
+  background-color: gold;
+  border-radius: 5px;
+  padding: 3px;
+  padding-right: 10px;
+}
 
 .grid {
   height: 80vh;
@@ -58,6 +96,8 @@ html {
   background-color: gray;
   display: flex;
   flex-direction: column;
+  border: 5px solid yellow;
+  border-radius: 5px;
 }
 
 
@@ -73,7 +113,7 @@ html {
 .grid .row .occupied {
   height: 100%;
   width: 2%;
-  border: 1px solid black;
+  border: 1px solid yellow;
   margin: 0;
   padding: 0;
   background-color: green;
@@ -84,14 +124,14 @@ html {
   width: 2%;
   margin: 0;
   padding: 0;
-  background-color: blue;
-  border: 1px solid black;
+  background-color: gold;
+  border: 1px solid yellow;
 }
 
 .selections {
   height: 100%;
   width: 15%;
-  background-color: yellow;
+  background-color: transparent;
 }
 .selections .selection{
   height: 20%;
