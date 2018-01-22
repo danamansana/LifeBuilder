@@ -26,15 +26,8 @@ document.addEventListener('DOMContentLoaded', ()=> {
   let header = document.createElement("div");
   header.classList.add("header");
   header.classList.add("blankSpace");
-  root.appendChild(header);
-  let title = document.createElement("h1");
-  header.appendChild(title);
-  let titleText = document.createTextNode("LifeBuilder")
-  title.appendChild(titleText);
-  let tagLine = document.createElement("h2");
-  let tagLineText = document.createTextNode("search for patterns in the Game of Life!");
-  tagLine.appendChild(tagLineText);
-  title.appendChild(tagLine);
+  //root.appendChild(header);
+
   let middle = document.createElement("div");
   middle.classList.add("middle");
   middle.classList.add("blankSpace");
@@ -78,6 +71,11 @@ document.addEventListener('DOMContentLoaded', ()=> {
   let selected;
   let samples = [glider, oscillator, gun];
   let sampleNames = ["glider", "oscillator", "gun"];
+  let instructions = document.createElement("div");
+  instructions.classList.add("Button");
+  let instructionsText = document.createTextNode("Click on squares to make them green. Or click on a pattern below and click the grid to place it (click any blank space to unselect your pattern). Then press start to watch your pattern evolve!");
+  instructions.appendChild(instructionsText);
+  selections.appendChild(instructions);
   for (selectionCount = 0; selectionCount < 3; selectionCount++){
     let selection = document.createElement("div");
     let localCount = selectionCount;
@@ -96,7 +94,28 @@ document.addEventListener('DOMContentLoaded', ()=> {
   footer.classList.add("footer");
   footer.classList.add("blankSpace");
   root.appendChild(footer);
+  let footText = document.createTextNode("Created by Daniel Appel");
+  footer.appendChild(footText);
+  let github = document.createElement("a");
+  github.href = "https://github.com/danamansana";
+  footer.appendChild(github);
+  let gitText = document.createElement("i");
+  github.appendChild(gitText);
+  gitText.classList.add("fa&ndspfa-github");
+  gitText.appendChild(document.createTextNode("GitHub"));
   let interval;
+  let title = document.createElement("div");
+  title.classList.add("Button");
+  options.appendChild(title);
+  let titleText = document.createTextNode("LifeBuilder")
+  title.appendChild(titleText);
+  let tagLine = document.createElement("div");
+  title.classList.add("Button");
+  title.id = "title";
+  let tagLineText = document.createTextNode("search for patterns in the Game of Life!");
+  tagLine.appendChild(tagLineText);
+  tagLine.id = "tagLine";
+  title.appendChild(tagLine);
   let startButton = document.createElement("div");
   startButton.classList.add("Button");
   options.appendChild(startButton);
@@ -144,6 +163,7 @@ document.addEventListener('DOMContentLoaded', ()=> {
   });
   speedLabel.appendChild(inputSpeed);
   let zoomLabel = document.createElement("label");
+  zoomLabel.classList.add("zoomLabel");
   let zoomText = document.createTextNode("Zoom");
   let zoomP  = document.createElement("p");
   options.appendChild(zoomLabel);

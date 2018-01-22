@@ -22,22 +22,13 @@ html {
   justify-content: flex-start;
 }
 
-.header h1 {
-  background-color: gold;
-  color: green;
-  font-size: 30px;
-  width: fit-content;
-  padding: 5px;
-  border-radius: 5px;
-  height: fit-content;
-}
 
-.header h2 {
-  background-color: transparent;
-  color: green;
+
+.options #tagLine{
   font-size: 15px;
-  width: fit-content;
-  padding: 5px;
+}
+.options #title{
+  font-size: 25px;
 }
 .Button {
   width: fit-content;
@@ -74,10 +65,13 @@ html {
 .footer {
   height: 10%;
   background-color: transparent;
+  color: gold;
+  display: flex;
+  justify-content: space-around;
 }
 
 .middle {
-  height: 80%;
+  height: 90%;
   display: flex;
   background-color: transparent;
   justify-content: space-between;
@@ -86,8 +80,10 @@ html {
 .optionsHolder{
   display: flex;
   justify-content: center;
+  height: 100%;
 }
 .options {
+  font-family: Papyrus;
   display: flex;
   flex-direction: column;
   height: 100%;
@@ -115,6 +111,7 @@ p{
   flex-direction: column;
   border: 5px solid yellow;
   border-radius: 5px;
+  margin-top: 20px;
 }
 
 
@@ -147,12 +144,40 @@ p{
 
 .selections {
   height: 100%;
-  width: 15%;
+  width: 25%;
   background-color: transparent;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
 }
 .selections .selection{
-  height: 20%;
-  background-color: gray;
-  border: 1px solid black;
+  /* height: 20%; */
+  background-color: transparent;
+  /* border: 1px solid black; */
   box-sizing: border-box;
+}
+
+.selections .selection .selectionRow{
+  height: 2vh;
+  display: flex;
+}
+
+.selections .selection .selectionRow .occupied{
+  width: 2vh;
+  height: 2vh;
+  background-color: green;
+  border: 1px solid yellow;
+  box-sizing: border-box;
+}
+
+.selections .selection .selectionRow .vacant{
+  width: 2vh;
+  height: 2vh;
+  background-color: gold;
+  border: 1px solid yellow;
+  box-sizing: border-box;
+}
+
+.zoomLabel{
+  display: none;
 }

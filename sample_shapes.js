@@ -15,7 +15,7 @@ export const oscillator = [
 [0,0,0,0,0,0,0,0,0,0,0,0,0],
 [0,0,1,1,1,0,0,0,1,1,1,0,0]];
 
-export const gun = [
+export const vertGun = [
   [0,0,0,0,1,1,0,0,0,0,0],
   [0,0,0,0,1,1,0,0,0,0,0],
   [0,0,0,0,0,0,0,0,0,0,0],
@@ -28,6 +28,7 @@ export const gun = [
   [0,0,0,0,0,0,0,0,0,0,0],
   [0,0,0,1,1,1,0,0,0,0,0],
   [0,0,1,0,0,0,1,0,0,0,0],
+  [0,1,0,0,0,0,0,1,0,0,0],
   [0,1,0,0,0,0,0,1,0,0,0],
   [0,0,0,0,1,0,0,0,0,0,0],
   [0,0,1,0,0,0,1,0,0,0,0],
@@ -52,3 +53,19 @@ export const gun = [
   [0,0,0,0,0,0,1,1,0,0,0],
   [0,0,0,0,0,0,1,1,0,0,0],
 ];
+
+export const gun = transpose(vertGun);
+
+function column(index, matrix){
+  let col = [];
+  matrix.forEach((row) => {col.push(row[index]);});
+  return col;
+}
+
+function transpose(matrix){
+  let trans = [];
+  for (let i = 0; i < matrix[0].length; i++){
+    trans.push(column(i, matrix));
+  }
+  return trans;
+}
