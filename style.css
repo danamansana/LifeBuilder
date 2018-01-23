@@ -39,6 +39,10 @@ html {
   padding: 3px;
   padding-right: 10px;
 }
+
+.Button:hover{
+  cursor: pointer;
+}
 .startButton {
   height: 20px;
   width: 30px;
@@ -61,13 +65,6 @@ html {
   height: 20px;
   width: 30px;
   background-color: orange;
-}
-.footer {
-  height: 10%;
-  background-color: transparent;
-  color: gold;
-  display: flex;
-  justify-content: space-around;
 }
 
 .middle {
@@ -180,4 +177,23 @@ p{
 
 .zoomLabel{
   display: none;
+}
+
+.footer {
+  height: 10%;
+  background-color: transparent;
+  color: gold;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.footer p {
+  background-color: transparent;
+  color: gold;
+}
+
+.footer a {
+  background-color: transparent;
+  color: gold;
 }

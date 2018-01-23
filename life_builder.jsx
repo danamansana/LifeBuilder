@@ -28,10 +28,10 @@ document.addEventListener('DOMContentLoaded', ()=> {
   header.classList.add("blankSpace");
   //root.appendChild(header);
 
-  let middle = document.createElement("div");
-  middle.classList.add("middle");
+  let middle = document.getElementById("middle");
+  //middle.classList.add("middle");
   middle.classList.add("blankSpace");
-  root.appendChild(middle);
+  //root.appendChild(middle);
   let options = document.createElement("div");
   let optionsHolder = document.createElement("div");
   optionsHolder.classList.add("optionsHolder");
@@ -90,19 +90,19 @@ document.addEventListener('DOMContentLoaded', ()=> {
     );
     gridDrawer(selection, samples[selectionCount]);
   }
-  let footer = document.createElement("div");
-  footer.classList.add("footer");
-  footer.classList.add("blankSpace");
-  root.appendChild(footer);
-  let footText = document.createTextNode("Created by Daniel Appel");
-  footer.appendChild(footText);
-  let github = document.createElement("a");
-  github.href = "https://github.com/danamansana";
-  footer.appendChild(github);
-  let gitText = document.createElement("i");
-  github.appendChild(gitText);
-  gitText.classList.add("fa&ndspfa-github");
-  gitText.appendChild(document.createTextNode("GitHub"));
+  // let footer = document.createElement("div");
+  // footer.classList.add("footer");
+  // footer.classList.add("blankSpace");
+  // root.appendChild(footer);
+  // let footText = document.createTextNode("Created by Daniel Appel");
+  // footer.appendChild(footText);
+  // let github = document.createElement("a");
+  // github.href = "https://github.com/danamansana";
+  // footer.appendChild(github);
+  // let gitText = document.createElement("i");
+  // github.appendChild(gitText);
+  // gitText.classList.add("fa&ndspfa-github");
+  // gitText.appendChild(document.createTextNode("GitHub"));
   let interval;
   let title = document.createElement("div");
   title.classList.add("Button");
@@ -118,18 +118,24 @@ document.addEventListener('DOMContentLoaded', ()=> {
   title.appendChild(tagLine);
   let startButton = document.createElement("div");
   startButton.classList.add("Button");
+  startButton.id = "startButton";
   options.appendChild(startButton);
   let speed = 1000;
   startButton.addEventListener("click", () => {
     stopped = false;
+    startText.nodeValue = "evolving...";
     //updateCellsRepeatedly();
   });
   let startText = document.createTextNode("Start");
+  startText.id = "startText";
   startButton.appendChild(startText);
   let stopButton = document.createElement("div");
   stopButton.classList.add("Button");
   options.appendChild(stopButton);
-  stopButton.addEventListener("click", () => {stopped = true;});
+  stopButton.addEventListener("click", () => {
+    stopped = true;
+    startText.nodeValue = "Start";
+  });
   let stopText = document.createTextNode("Stop");
   stopButton.appendChild(stopText);
   let stepButton = document.createElement("div");
