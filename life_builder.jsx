@@ -85,7 +85,7 @@ document.addEventListener('DOMContentLoaded', ()=> {
     selection.addEventListener('click', () => {
 
       selected = samples[localCount];
-      //console.log(selected);
+      
     }
     );
     gridDrawer(selection, samples[selectionCount]);
@@ -165,7 +165,7 @@ document.addEventListener('DOMContentLoaded', ()=> {
   inputSpeed.setAttribute("value", 100);
   inputSpeed.addEventListener("change", (e) => {
     speed = speed*(parseInt(e.target.value)/100);
-    console.log(speed);
+
   });
   speedLabel.appendChild(inputSpeed);
   let zoomLabel = document.createElement("label");
@@ -186,7 +186,6 @@ document.addEventListener('DOMContentLoaded', ()=> {
   function updateCellsRepeatedly(){
     let newTime = Date.now();
     let speed = parseInt(document.getElementById("speed").value)*10;
-    console.log(speed);
     if (newTime - lastTime > speed && !stopped){
       updateCells();
       lastTime = newTime;

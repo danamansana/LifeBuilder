@@ -147,6 +147,7 @@ p{
   display: flex;
   flex-direction: column;
   justify-content: space-around;
+  padding-right: 20px;
 }
 .selections .selection{
   /* height: 20%; */
@@ -189,13 +190,15 @@ p{
   align-items: center;
 }
 
-.footer p {
+.footer #portfolio {
   background-color: transparent;
   color: gold;
+  font-size: 20px;
 }
 
 .footer a {
   background-color: transparent;
   color: gold;
   font-size: 45px;
+  text-decoration: none;
 }

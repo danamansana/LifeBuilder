@@ -1157,7 +1157,6 @@ document.addEventListener('DOMContentLoaded', function () {
     selection.addEventListener('click', function () {
 
       selected = samples[localCount];
-      //console.log(selected);
     });
     (0, _grid_drawer2.default)(selection, samples[selectionCount]);
   };
@@ -1240,7 +1239,6 @@ document.addEventListener('DOMContentLoaded', function () {
   inputSpeed.setAttribute("value", 100);
   inputSpeed.addEventListener("change", function (e) {
     speed = speed * (parseInt(e.target.value) / 100);
-    console.log(speed);
   });
   speedLabel.appendChild(inputSpeed);
   var zoomLabel = document.createElement("label");
@@ -1261,7 +1259,6 @@ document.addEventListener('DOMContentLoaded', function () {
   function updateCellsRepeatedly() {
     var newTime = Date.now();
     var speed = parseInt(document.getElementById("speed").value) * 10;
-    console.log(speed);
     if (newTime - lastTime > speed && !stopped) {
       (0, _vector_methods.updateCells)();
       lastTime = newTime;
