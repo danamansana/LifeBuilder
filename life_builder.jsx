@@ -48,6 +48,14 @@ document.addEventListener('DOMContentLoaded', ()=> {
       return toggleFunction(e.target)();
     }
   });
+  grid.addEventListener("mouseover", (e) => {
+    if(dragging){
+      return toggleFunction(e.target)();
+    }
+  });
+  let dragging = false;
+  grid.addEventListener("mousedown", (e) => {dragging = true;});
+  grid.addEventListener("mouseup", (e) => {dragging= false;});
   let row = 0;
   for(row = 0; row < 50; row++){
     let rowEl = document.createElement("div");
@@ -85,7 +93,7 @@ document.addEventListener('DOMContentLoaded', ()=> {
     selection.addEventListener('click', () => {
 
       selected = samples[localCount];
-      
+
     }
     );
     gridDrawer(selection, samples[selectionCount]);

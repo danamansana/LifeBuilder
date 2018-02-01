@@ -1119,6 +1119,18 @@ document.addEventListener('DOMContentLoaded', function () {
       return toggleFunction(e.target)();
     }
   });
+  grid.addEventListener("mouseover", function (e) {
+    if (dragging) {
+      return toggleFunction(e.target)();
+    }
+  });
+  var dragging = false;
+  grid.addEventListener("mousedown", function (e) {
+    dragging = true;
+  });
+  grid.addEventListener("mouseup", function (e) {
+    dragging = false;
+  });
   var row = 0;
   for (row = 0; row < 50; row++) {
     var rowEl = document.createElement("div");
